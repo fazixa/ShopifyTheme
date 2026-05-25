@@ -86,6 +86,7 @@
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
               {% endif %}
+              {%- if variant_style != 'swatch' %}<div class="sk-variant-frame">{% endif -%}
               <label
                 class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}"
               >
@@ -146,6 +147,7 @@
                 {% endif %}
                 {% render 'strikethrough-variant', product_option: product_option_value %}
               </label>
+              {%- if variant_style != 'swatch' %}</div>{% endif -%}
             {%- endfor -%}
             {% if option_id_attribute %}
               {% style %}

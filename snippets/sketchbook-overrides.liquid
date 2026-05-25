@@ -139,10 +139,42 @@
     pointer-events: none;
   }
 
-  /* ── Sketchbook: Wobbly variant size buttons ── */
-  .variant-option__button-label:not(.variant-option__button-label--has-swatch) {
+  /* ── Sketchbook: Wobbly variant size button outlines ── */
+  /* Wrapper draws the wobbly border; label content stays undistorted */
+  .sk-variant-frame {
+    position: relative;
+    display: flex;
+    flex: 0 0 3.25em;
+    min-width: fit-content;
+  }
+
+  .sk-variant-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: var(--options-border-width) solid var(--color-variant-border);
+    border-radius: var(--options-border-radius);
     filter: url(#sk-wobble);
-    overflow: visible;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .sk-variant-frame:hover::before {
+    border-color: var(--color-variant-hover-border);
+  }
+
+  .sk-variant-frame:has(:checked)::before {
+    border-color: var(--color-selected-variant-border);
+  }
+
+  /* Hide the native border and the theme's fake-border ::before overlay */
+  .sk-variant-frame .variant-option__button-label {
+    border-color: transparent !important;
+    flex: 1;
+  }
+
+  .sk-variant-frame .variant-option__button-label::before {
+    display: none;
   }
 
   /* ── Sketchbook: Wobbly footer separator line ── */
