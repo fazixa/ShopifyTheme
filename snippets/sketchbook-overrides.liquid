@@ -1,0 +1,32 @@
+{% # theme-check-disable RemoteAsset %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Permanent+Marker&display=swap"
+>
+{% # theme-check-enable RemoteAsset %}
+
+{% style %}
+  /* ── Sketchbook: Hand-drawn font overrides ── */
+  :root {
+    --font-body--family: 'Caveat', cursive;
+    --font-body--style: normal;
+    --font-body--weight: 400;
+    --font-subheading--family: 'Caveat', cursive;
+    --font-subheading--style: normal;
+    --font-subheading--weight: 600;
+    --font-heading--family: 'Permanent Marker', cursive;
+    --font-heading--style: normal;
+    --font-heading--weight: 400;
+    --font-accent--family: 'Caveat', cursive;
+    --font-accent--style: normal;
+    --font-accent--weight: 600;
+  }
+
+  /* Caveat renders naturally larger — nudge body up a touch for readability */
+  body {
+    font-size: 1.0625rem;
+    letter-spacing: 0.01em;
+  }
+{% endstyle %}

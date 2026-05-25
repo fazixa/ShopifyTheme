@@ -25,16 +25,26 @@
     {{- block.shopify_attributes -}}
   {% endif %}
 >
-  <span
+  <svg
     class="divider__line"
     style="
       --divider-border-thickness: {{ settings.thickness }}px;
-      {% unless full_width %}
-        --divider-border-rounded: {% if settings.corner_radius == 'rounded' %}1{% else %}0{% endif %};
-      {% endunless %}
       --divider-flex-basis: {{ settings.width_percent }}%;
     "
-  ></span>
+    viewBox="0 0 200 10"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M0,5 Q10,2 20,5.5 Q30,8.5 40,4.5 Q50,1.5 60,5 Q70,8 80,5.5 Q90,2.5 100,5 Q110,8 120,4.5 Q130,1.5 140,5.5 Q150,8.5 160,4.5 Q170,2 180,5 Q190,8 200,5"
+      fill="none"
+      stroke="var(--color-border)"
+      stroke-width="{{ settings.thickness | default: 1 | at_least: 1.5 }}"
+      stroke-linecap="round"
+      vector-effect="non-scaling-stroke"
+    />
+  </svg>
 </div>
 
 {% stylesheet %}
@@ -46,10 +56,10 @@
   }
 
   .divider__line {
-    border-bottom: var(--divider-border-thickness) solid var(--color-border);
-    border-right: var(--divider-border-thickness) solid var(--color-border);
-    border-radius: calc(var(--style-border-radius-sm) * var(--divider-border-rounded));
     flex-basis: var(--divider-flex-basis);
+    height: 10px;
     min-height: var(--divider-flex-basis);
+    overflow: visible;
+    border: none;
   }
 {% endstylesheet %}
