@@ -140,42 +140,28 @@
   }
 
   /* ── Sketchbook: Wobbly variant size button outlines ── */
-  /* Wrapper draws the wobbly border; label content stays undistorted */
-  .sk-variant-frame {
-    position: relative;
-    display: flex;
-    flex: 0 0 3.25em;
-    min-width: fit-content;
+  /* Hide the native border and theme's fake-border ::before overlay */
+  .variant-option__button-label:not(.variant-option__button-label--has-swatch) {
+    border-color: transparent !important;
   }
-
-  .sk-variant-frame::before {
-    content: '';
+  .variant-option__button-label:not(.variant-option__button-label--has-swatch)::before {
+    display: none;
+  }
+  /* Wobbly border drawn on a separate span so text is unaffected */
+  .sk-btn-border {
     position: absolute;
     inset: 0;
     border: var(--options-border-width) solid var(--color-variant-border);
-    border-radius: var(--options-border-radius);
-    filter: url(#sk-wobble);
+    border-radius: inherit;
+    filter: url(#sk-wobble-btn);
     pointer-events: none;
-    z-index: 3;
+    z-index: 10;
   }
-
-  .sk-variant-frame:hover::before {
+  .variant-option__button-label:hover .sk-btn-border {
     border-color: var(--color-variant-hover-border);
   }
-
-  .sk-variant-frame:has(:checked)::before {
+  .variant-option__button-label:has(:checked) .sk-btn-border {
     border-color: var(--color-selected-variant-border);
-  }
-
-  /* Hide the native border and the theme's fake-border ::before overlay */
-  .sk-variant-frame .variant-option__button-label {
-    border-color: transparent !important;
-    background-color: transparent !important;
-    flex: 1;
-  }
-
-  .sk-variant-frame .variant-option__button-label::before {
-    display: none;
   }
 
   /* ── Sketchbook: Wobbly footer separator line ── */
