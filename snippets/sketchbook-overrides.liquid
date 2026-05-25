@@ -33,10 +33,13 @@
     letter-spacing: 0.01em;
   }
 
-  /* ── Product descriptions: Exo 2 font ── */
+  /* ── Product descriptions + accordion headers: Exo 2 font ── */
   .rte,
-  rte-formatter {
+  rte-formatter,
+  .accordion {
     font-family: 'Exo 2', sans-serif !important;
+    --summary-font-family: 'Exo 2', sans-serif !important;
+    --summary-font-size: 1.125rem !important;
     font-weight: 400;
   }
 
@@ -61,6 +64,49 @@
   .menu-list__link {
     animation: sk-text-boil 1.25s steps(5, end) infinite;
     will-change: filter;
+  }
+
+  /* ── Sketchbook: Wobbly accordion dividers ── */
+  .accordion--dividers .details {
+    position: relative;
+    border-block-start: none !important;
+    border-block-end: none !important;
+  }
+
+  .accordion--dividers .details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      var(--color-border) 40%,
+      var(--color-border) 60%,
+      transparent 60%
+    );
+    filter: url(#sk-wobble);
+    pointer-events: none;
+  }
+
+  .accordion--dividers accordion-custom:last-child .details::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      var(--color-border) 40%,
+      var(--color-border) 60%,
+      transparent 60%
+    );
+    filter: url(#sk-wobble);
+    pointer-events: none;
   }
 
   /* ── Sketchbook: Wobbly header separator line ── */
@@ -91,6 +137,12 @@
     opacity: 0.35;
     filter: url(#sk-wobble);
     pointer-events: none;
+  }
+
+  /* ── Sketchbook: Wobbly variant size buttons ── */
+  .variant-option__button-label:not(.variant-option__button-label--has-swatch) {
+    filter: url(#sk-wobble);
+    overflow: visible;
   }
 
   /* ── Sketchbook: Wobbly footer separator line ── */
