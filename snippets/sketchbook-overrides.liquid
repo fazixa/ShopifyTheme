@@ -3,30 +3,118 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Permanent+Marker&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Schoolbell&display=swap"
 >
 {% # theme-check-enable RemoteAsset %}
 
 {% style %}
   /* ── Sketchbook: Hand-drawn font overrides ── */
   :root {
-    --font-body--family: 'Caveat', cursive;
+    --font-body--family: 'Schoolbell', cursive;
     --font-body--style: normal;
     --font-body--weight: 400;
-    --font-subheading--family: 'Caveat', cursive;
+    --font-subheading--family: 'Schoolbell', cursive;
     --font-subheading--style: normal;
-    --font-subheading--weight: 600;
-    --font-heading--family: 'Permanent Marker', cursive;
+    --font-subheading--weight: 400;
+    --font-heading--family: 'Schoolbell', cursive;
     --font-heading--style: normal;
     --font-heading--weight: 400;
-    --font-accent--family: 'Caveat', cursive;
+    --font-accent--family: 'Schoolbell', cursive;
     --font-accent--style: normal;
-    --font-accent--weight: 600;
+    --font-accent--weight: 400;
   }
 
-  /* Caveat renders naturally larger — nudge body up a touch for readability */
+  /* Scale all rem-based font sizes up by 1px from the root */
+  html {
+    font-size: 17px;
+  }
+
   body {
-    font-size: 1.0625rem;
     letter-spacing: 0.01em;
+  }
+
+  /* ── Product descriptions: Exo 2 font ── */
+  .rte,
+  rte-formatter {
+    font-family: 'Exo 2', sans-serif !important;
+    font-weight: 400;
+  }
+
+  /* ── Sketchbook: Line boil — letterform shape distortion ── */
+  @keyframes sk-text-boil {
+    0%   { filter: url(#sk-tb-1); }
+    20%  { filter: url(#sk-tb-2); }
+    40%  { filter: url(#sk-tb-3); }
+    60%  { filter: url(#sk-tb-4); }
+    80%  { filter: url(#sk-tb-5); }
+    100% { filter: url(#sk-tb-1); }
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .h1:not(.text-block),
+  .h2:not(.text-block),
+  .h3:not(.text-block),
+  .h4:not(.text-block),
+  .h5:not(.text-block),
+  .h6:not(.text-block),
+  .header-logo,
+  .menu-list__link {
+    animation: sk-text-boil 1.25s steps(5, end) infinite;
+    will-change: filter;
+  }
+
+  /* ── Sketchbook: Wobbly header separator line ── */
+  .header__row--top:not(.divider--page-width),
+  .header__row--top.divider--page-width .header__columns,
+  .header__row--bottom {
+    position: relative;
+    overflow: visible;
+    border-bottom: none !important;
+  }
+
+  .header__row--top:not(.divider--page-width)::after,
+  .header__row--top.divider--page-width .header__columns::after,
+  .header__row--bottom::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      var(--color-foreground) 40%,
+      var(--color-foreground) 60%,
+      transparent 60%
+    );
+    opacity: 0.35;
+    filter: url(#sk-wobble);
+    pointer-events: none;
+  }
+
+  /* ── Sketchbook: Wobbly footer separator line ── */
+  .utilities {
+    position: relative;
+    border-top: none !important;
+  }
+
+  .utilities::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      var(--color-foreground) 40%,
+      var(--color-foreground) 60%,
+      transparent 60%
+    );
+    opacity: 0.35;
+    filter: url(#sk-wobble);
+    pointer-events: none;
   }
 {% endstyle %}
