@@ -219,9 +219,9 @@
 
         {%- liquid
           assign option_name_lower = product_option.name | downcase
-          assign size_guide_content = product_resource.metafields.custom.size_guide
+          assign size_guide_page = product_resource.metafields.custom.size_guide.value
         -%}
-        {%- if option_name_lower == 'size' and size_guide_content != blank -%}
+        {%- if option_name_lower == 'size' and size_guide_page != blank -%}
           <script src="{{ 'dialog.js' | asset_url }}" type="module"></script>
           <dialog-component class="size-guide-popup">
             <button
@@ -239,10 +239,10 @@
               aria-labelledby="size-guide-heading-{{ block.id }}"
             >
               <h2 id="size-guide-heading-{{ block.id }}" class="size-guide-popup__heading">
-                Size Guide
+                {{- size_guide_page.title | default: 'Size Guide' -}}
               </h2>
               <div class="size-guide-popup__content rte">
-                {{ size_guide_content | metafield_tag }}
+                {{ size_guide_page.content }}
               </div>
               <button
                 ref="closeButton"
