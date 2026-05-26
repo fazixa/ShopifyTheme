@@ -216,6 +216,45 @@
             </div>
           </div>
         {%- endif -%}
+
+        {%- liquid
+          assign option_name_lower = product_option.name | downcase
+          assign size_guide_content = product_resource.metafields.custom.size_guide
+        -%}
+        {%- if option_name_lower == 'size' and size_guide_content != blank -%}
+          <script src="{{ 'dialog.js' | asset_url }}" type="module"></script>
+          <dialog-component class="size-guide-popup">
+            <button
+              on:click="/showDialog"
+              class="button button-unstyled size-guide-popup__trigger"
+              aria-haspopup="dialog"
+            >
+              Size Guide
+              <span class="svg-wrapper">{{- 'icon-external.svg' | inline_asset_content -}}</span>
+            </button>
+            <dialog
+              ref="dialog"
+              class="size-guide-popup__dialog dialog-modal color-{{ settings.popover_color_scheme }}"
+              scroll-lock
+              aria-labelledby="size-guide-heading-{{ block.id }}"
+            >
+              <h2 id="size-guide-heading-{{ block.id }}" class="size-guide-popup__heading">
+                Size Guide
+              </h2>
+              <div class="size-guide-popup__content rte">
+                {{ size_guide_content | metafield_tag }}
+              </div>
+              <button
+                ref="closeButton"
+                on:click="/closeDialog"
+                class="button button-unstyled close-button size-guide-popup__close"
+                aria-label="{{ 'accessibility.close_dialog' | t }}"
+              >
+                {{- 'icon-close.svg' | inline_asset_content -}}
+              </button>
+            </dialog>
+          </dialog-component>
+        {%- endif -%}
       {%- endfor -%}
 
       <script type="application/json">

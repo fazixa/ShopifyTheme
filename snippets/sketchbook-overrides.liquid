@@ -139,6 +139,57 @@
     pointer-events: none;
   }
 
+  /* ── Exo 2 font for product action elements ── */
+  .variant-option__button-label,
+  .variant-option legend,
+  .quantity-selector,
+  .add-to-cart-button,
+  product-price,
+  .price__regular,
+  .price__sale,
+  .price,
+  .compare-at-price {
+    font-family: 'Exo 2', sans-serif !important;
+  }
+
+  /* ── Exo 2 for cart drawer and cart page — excluding product titles ── */
+  .cart-items-component *,
+  .cart-page *,
+  .cart-totals * {
+    font-family: 'Exo 2', sans-serif !important;
+  }
+
+  .cart-items-component .cart-items__title,
+  .cart-items-component .cart-items__title *,
+  .cart-page .cart-title,
+  .cart-page .cart-title h1,
+  .cart-page .cart-title h2,
+  .cart-page .cart-title h3,
+  .cart-drawer .cart-drawer__heading,
+  .cart-drawer .cart-drawer__heading.h4,
+  .cart-drawer__heading,
+  .cart-drawer__heading.h4 {
+    font-family: var(--font-heading--family) !important;
+  }
+
+  /* ── Sketchbook: Wobbly quantity box and add-to-cart button outlines ── */
+  .quantity-selector {
+    position: relative;
+    border-color: transparent !important;
+  }
+
+  .quantity-selector::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    border-radius: var(--style-border-radius-inputs);
+    filter: url(#sk-wobble-btn);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+
   /* ── Sketchbook: Wobbly variant size button outlines ── */
   /* Hide the native border and theme's fake-border ::before overlay */
   .variant-option__button-label:not(.variant-option__button-label--has-swatch) {
@@ -154,6 +205,7 @@
     border: var(--options-border-width) solid var(--color-variant-border);
     border-radius: inherit;
     filter: url(#sk-wobble-btn);
+    will-change: filter;
     pointer-events: none;
     z-index: 10;
   }
@@ -162,6 +214,94 @@
   }
   .variant-option__button-label:has(:checked) .sk-btn-border {
     border-color: var(--color-selected-variant-border);
+  }
+
+  /* ── Size guide popup trigger link ── */
+  .size-guide-popup {
+    display: block;
+    margin-top: var(--margin-xs);
+  }
+
+  .size-guide-popup__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-2xs);
+    font-family: 'Exo 2', sans-serif;
+    font-size: var(--font-size--sm);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    color: var(--color-foreground);
+    opacity: 0.75;
+  }
+
+  .size-guide-popup__trigger:hover {
+    opacity: 1;
+  }
+
+  .size-guide-popup__trigger svg {
+    width: var(--icon-size-2xs);
+    height: var(--icon-size-2xs);
+  }
+
+  /* ── Size guide dialog modal ── */
+  .size-guide-popup__dialog {
+    box-shadow: var(--shadow-popover);
+    border: var(--style-border-popover);
+    border-radius: var(--style-border-radius-popover);
+    background-color: var(--color-background);
+    padding: var(--padding-4xl) var(--padding-xl) var(--padding-xl);
+    max-width: min(90vw, 640px);
+    max-height: var(--modal-max-height);
+    width: 100%;
+    overflow-y: auto;
+
+    @media screen and (min-width: 750px) {
+      padding: var(--padding-5xl);
+    }
+  }
+
+  .size-guide-popup__dialog[open] {
+    animation: modalSlideInTop var(--animation-speed) var(--animation-easing) forwards;
+  }
+
+  .size-guide-popup__dialog.dialog-closing {
+    animation: modalSlideOutTop var(--animation-speed) var(--animation-easing) forwards;
+  }
+
+  .size-guide-popup__heading {
+    font-family: var(--font-heading--family) !important;
+    font-size: var(--font-size--lg);
+    margin-block-end: var(--margin-lg);
+  }
+
+  .size-guide-popup__close {
+    position: absolute;
+    top: var(--margin-sm);
+    right: var(--margin-sm);
+    opacity: 0.8;
+  }
+
+  .size-guide-popup__content {
+    font-family: 'Exo 2', sans-serif;
+    font-size: var(--font-size--sm);
+  }
+
+  .size-guide-popup__content table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .size-guide-popup__content th,
+  .size-guide-popup__content td {
+    padding: var(--padding-xs) var(--padding-sm);
+    border: var(--style-border-width) solid var(--color-border);
+    text-align: center;
+  }
+
+  .size-guide-popup__content th {
+    font-weight: 600;
+    background: rgb(var(--color-foreground-rgb) / 0.05);
   }
 
   /* ── Sketchbook: Wobbly footer separator line ── */
