@@ -333,10 +333,15 @@
     background: rgb(var(--color-foreground-rgb) / 0.05);
   }
 
-  /* ── Mobile hero: reduce height so image is less cropped ── */
-  @media screen and (max-width: 749px) {
-    .hero {
-      --hero-min-height: 18rem !important;
+  @media screen and (max-width: 480px) {
+    .hero__container {
+      min-height: 18rem !important;
+    }
+  }
+
+  @media screen and (max-width: 430px) {
+    .hero__container {
+      min-height: 15rem !important;
     }
   }
 
