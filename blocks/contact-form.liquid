@@ -167,6 +167,28 @@
     display: flex;
     align-items: center;
     gap: var(--gap-xs);
+    padding: var(--padding-lg) var(--padding-xl);
+    border-radius: var(--style-border-radius-inputs);
+    font-family: 'Exo 2', sans-serif;
+  }
+
+  .contact-form__success {
+    color: #2a7a3b;
+    background: rgba(42, 122, 59, 0.08);
+    border: 1px solid rgba(42, 122, 59, 0.3);
+  }
+
+  .contact-form__error {
+    color: #b91c1c;
+    background: rgba(185, 28, 28, 0.08);
+    border: 1px solid rgba(185, 28, 28, 0.3);
+  }
+
+  /* Hide form fields once submitted successfully */
+  .contact-form__form:has(.contact-form__success) .contact-form__form-row,
+  .contact-form__form:has(.contact-form__success) .contact-form__input,
+  .contact-form__form:has(.contact-form__success) .submit-button {
+    display: none;
   }
 {% endstylesheet %}
 
