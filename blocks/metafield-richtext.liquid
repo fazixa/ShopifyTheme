@@ -1,0 +1,36 @@
+
+{% liquid
+  assign ns  = block.settings.namespace
+  assign key = block.settings.metafield_key
+  assign mf  = closest.product.metafields[ns][key]
+%}
+
+{%- if mf != blank -%}
+  <div
+    class="rte metafield-richtext"
+    {{ block.shopify_attributes }}
+  >
+    {{ mf | metafield_tag }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Metafield Rich Text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "namespace",
+      "label": "Metafield namespace",
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Metafield key",
+      "default": "material"
+    }
+  ]
+}
+{% endschema %}
