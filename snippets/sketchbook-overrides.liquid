@@ -77,7 +77,7 @@
   .accordion--dividers .details::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -5px;
     left: 0;
     right: 0;
     height: 10px;
@@ -95,7 +95,7 @@
   .accordion--dividers accordion-custom:last-child .details::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
     left: 0;
     right: 0;
     height: 10px;
@@ -171,6 +171,17 @@
   .cart-drawer__heading,
   .cart-drawer__heading.h4 {
     font-family: var(--font-heading--family) !important;
+  }
+
+  /* ── Product card titles: Schoolbell font + wiggle (price stays Exo 2) ── */
+  product-card a.contents .text-block {
+    font-family: var(--font-heading--family) !important;
+    font-size: 1.125rem !important;
+    animation: sk-text-boil 1.25s steps(5, end) infinite;
+    will-change: filter;
+  }
+  product-card a.contents .text-block * {
+    font-family: inherit !important;
   }
 
   /* ── Sketchbook: Wobbly quantity box and add-to-cart button outlines ── */

@@ -260,6 +260,24 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "accordion_row_style_fit": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Style and Fit",
+                    "open_by_default": false
+                  },
+                  "blocks": {
+                    "style_fit_text": {
+                      "type": "metafield-richtext",
+                      "settings": {
+                        "namespace": "custom",
+                        "metafield_key": "style_and_fit"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": ["style_fit_text"]
+                },
                 "accordion_row_material": {
                   "type": "_accordion-row",
                   "settings": {
@@ -298,6 +316,7 @@
                 }
               },
               "block_order": [
+                "accordion_row_style_fit",
                 "accordion_row_material",
                 "accordion_row_size_guide"
               ]
@@ -306,8 +325,8 @@
           "block_order": [
             "group_icgrde",
             "divider_VJhene",
-            "variant_picker_R3rGDr",
             "product_description",
+            "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "accordion_details"
           ]
