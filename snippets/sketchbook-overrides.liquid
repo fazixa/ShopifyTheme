@@ -217,6 +217,23 @@
     border-color: var(--color-selected-variant-border);
   }
 
+  /* ── Product image hover zoom ── */
+  @media (hover: hover) and (pointer: fine) {
+    .product-media-container--zoomable {
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    .product-media-container--zoomable .product-media__image {
+      transition: transform 0.12s ease;
+      will-change: transform;
+    }
+
+    .product-media-container--zoomable:hover .product-media__image {
+      transform: scale(2.5);
+    }
+  }
+
   /* ── Size guide popup trigger link ── */
   .size-guide-popup {
     display: block;
@@ -330,3 +347,16 @@
     pointer-events: none;
   }
 {% endstyle %}
+
+<script>
+  document.addEventListener('mousemove', (e) => {
+    const container = e.target.closest('.product-media-container--zoomable');
+    if (!container) return;
+    const img = container.querySelector('.product-media__image');
+    if (!img) return;
+    const rect = container.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    img.style.transformOrigin = `${x}% ${y}%`;
+  }, { passive: true });
+</script>
