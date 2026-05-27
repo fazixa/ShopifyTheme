@@ -333,6 +333,13 @@
     background: rgb(var(--color-foreground-rgb) / 0.05);
   }
 
+  /* ── Mobile hero: reduce height so image is less cropped ── */
+  @media screen and (max-width: 749px) {
+    .hero {
+      --hero-min-height: 18rem !important;
+    }
+  }
+
   /* ── Sketchbook: Wobbly footer separator line ── */
   .utilities {
     position: relative;
